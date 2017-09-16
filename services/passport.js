@@ -2,9 +2,17 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const Strategy = require('passport-local').Strategy;
 
-const config = require('../config/config');
-
 const User = mongoose.model('users');
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id);
+
+    done(null, user);
+});
 
 passport.use(new Strategy(
     async (username, password, done) => {
@@ -13,7 +21,7 @@ passport.use(new Strategy(
 
         if (existingUser) {
             done(null, existingUser);
-        } else { 
+        } else {
             done(null, false);
         }
     }
