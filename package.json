@@ -4,8 +4,17 @@
   "description": "Limao Content Divulgation and Distribution",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "cookie-session": "^1.3.1",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.11",
+    "passport": "^0.4.0"
+  }
 }
