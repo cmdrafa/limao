@@ -6,8 +6,14 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = new Schema({
     firstName: String,
     lastName: String,
-    email: String,
-    password: String,
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     posts: [PostSchema],
     createdOn: {
         type: Date,
@@ -15,15 +21,16 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function (next) {
+    console.log('trying to save user');
     const user = this;
 
-    bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.genSalt(10, function (err, salt) {
         if (err) {
             return next(err);
         }
 
-        bcrypt.hash(user.password, salt, null, (err, hash) => {
+        bcrypt.hash(user.password, salt, null, function (err, hash) {
             if (err) {
                 return next(err);
             }
@@ -34,14 +41,15 @@ userSchema.pre('save', (next) => {
     });
 });
 
-userSchema.methods.comparePassword = (candidatePassword, callback) => {
-    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-        if(err) {
-            return callback(err);
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) {
+            return cb(err);
         }
-        callback(null, isMatch);
+        cb(null, isMatch);
     });
 };
 
 mongoose.model('users', userSchema);
+
 

@@ -6,6 +6,8 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 
 // Config files
+require('./models/User');
+require('./models/Post');
 require('./services/passport');
 const config = require('./config/config');
 
@@ -29,10 +31,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Bind the auth route to express
-require('./routes/auth_route/')(app);
+const routes = require('./routes/auth_route');
+routes(app);
 
 //Define PORt and open the node server
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log('Limao webserver running on port', PORT);
 });
