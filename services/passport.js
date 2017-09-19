@@ -26,7 +26,7 @@ passport.use(new Strategy(localOptions,
         const user = await User.findOne({ email: email });
 
         if (!user) {
-            console.log('User doesnt exist, passport strategy');
+            console.log('User doesnt exist, inside passport strategy');
             done(null, false);
         }
 
