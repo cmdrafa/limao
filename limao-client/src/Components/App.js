@@ -4,10 +4,16 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Navbar from './NavBar';
 import Landing from './Landing';
-import Login from './Login'
+import Login from './Login';
+import SignUp from './Signup';
+import * as actions from '../Actions';
 
 
 class App extends Component {
+    componentDidMount() {
+        this.props.fetchUser();
+    }
+
     render() {
         return (
             <div className="container">
@@ -16,6 +22,7 @@ class App extends Component {
                         <Navbar />
                         <Route exact={true} path="/" component={Landing} />
                         <Route exact={true} path="/login" component={Login} />
+                        <Route exact={true} path="/signup" component={SignUp} />
                     </div>
                 </BrowserRouter>
             </div>
@@ -34,4 +41,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(null, actions)(App);

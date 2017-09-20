@@ -10,7 +10,7 @@ exports.signin = (req, res, next) => {
 
 exports.signup = async (req, res, done) => {
     console.log('Inside signup route');
-    //console.log('Body object ', req.body);
+    console.log('Body object ', req.body);
 
     if (!req.body.email || !req.body.password) {
         return res.status(422).send({ error: 'Please provide an email and password'});
