@@ -17,6 +17,6 @@ export const signinUser = ({ email, password }, history) => async (dispatch) => 
 export const signupUser = ({firstName, lastName, email, password}, history) => async (dispatch) =>{
     const res = await axios.post('/api/signup', { firstName, lastName, email, password});
 
-    history.push('/');
+    history.push('/login');
     dispatch({ type: FETCH_USER, payload: res.data});
 };

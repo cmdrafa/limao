@@ -31,5 +31,7 @@ exports.signup = async (req, res, done) => {
     });
     user.save();
 
+    res.send(req.user);
+
     done(null, user);
 };

@@ -6,18 +6,36 @@ import { Field, reduxForm } from 'redux-form';
 import * as actions from '../Actions';
 
 class Login extends Component {
+    renderField = ({ input, label, name, type, meta: { touched, error } }) => {
+        return (
+            <div className="field">
+                <label>{label}</label>
+                <div className="ui left icon input">
+                    <Icon name="user" />
+                    <input {...input} name={name} type={type} style={{ marginBottom: '5px' }} />
+                </div>
+                <div className="ui red" style={{ marginBottom: '20px', color: 'red' }} >
+                    <div className="header">
+                        {touched && error && <span className="error">{error}</span>}
+                    </div>
+                </div>
+            </div>
+
+        )
+    }
+
     conditionalRedirect() {
-        if(this.props.auth) {
+        if (this.props.auth) {
             this.props.history.push('/');
         }
     }
-    
+
     handleFormSubmit = (formProps, history) => {
         console.log("All props", this.props);
         this.props.signinUser(formProps, this.props.history)
     }
-    
-    renderAlert(){
+
+    renderAlert() {
         console.log(this.props)
     }
 
@@ -27,7 +45,7 @@ class Login extends Component {
 
         return (
             <div className="ui middle aligned center aligned grid">
-                <div className="column" style={{maxWidth: '450px'}}>
+                <div className="column" style={{ maxWidth: '450px' }}>
                     <h2 className="ui blue image header">
                         <Icon name="sign in" size="large" />
                         <div className="content">
@@ -36,20 +54,10 @@ class Login extends Component {
                     </h2>
                     <form onSubmit={handleSubmit(this.handleFormSubmit)} className="ui large form">
                         <div className="ui stacked segment">
-                            <div className="field">
-                                <label>Email</label>
-                                <div className="ui left icon input">
-                                    <Icon name="user" />
-                                    <Field name="email" component="input" type="text" placeholder="Email address" />
-                                </div>
-                            </div>
-                            <div className="field">
-                                <label>Password</label>
-                                <div className="ui left icon input">
-                                    <Icon name="lock" />
-                                    <Field name="password" component="input" type="password" placeholder="Your password" />
-                                </div>
-                            </div>
+                            <Field name="email" label="Email Address" component={this.renderField} 
+                            type="text" placeholder="Email address" />
+                            <Field name="password" label="Passowrd" component={this.renderField} 
+                            type="password" placeholder="Your password" />
                         </div>
                         <div>
                             <button className="fluid ui button blue" type="submit">Submit</button>
