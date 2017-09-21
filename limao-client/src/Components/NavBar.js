@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu, Icon, Dropdown, Input } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
-    state = {}
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+    }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -37,7 +41,7 @@ class NavBar extends Component {
                         onClick={this.handleItemClick}
                     >
                         Logout
-                        </Menu.Item> 
+                        </Menu.Item>
                 ]
         }
 
@@ -47,11 +51,10 @@ class NavBar extends Component {
         const { activeItem } = this.state
 
         return (
-            <Menu stackable inverted>
+            <Menu stackable>
                 <Menu.Item key={3} as={Link} to="/">
-                    <Icon name="home" size="large" />
+                    <Icon color="teal" name="home" size="large" />
                 </Menu.Item>
-
                 <Menu.Item
                     key={4}
                     name='features'
@@ -60,16 +63,30 @@ class NavBar extends Component {
                 >
                     Features
             </Menu.Item>
-
+                <Dropdown text="Sections" pointing className="link item">
+                    <Dropdown.Menu>
+                        <Dropdown.Header>Categories</Dropdown.Header>
+                        <Dropdown.Item> Arts </Dropdown.Item>
+                        <Dropdown.Item> Cinema </Dropdown.Item>
+                        <Dropdown.Item> Games </Dropdown.Item>
+                        <Dropdown.Item> Music </Dropdown.Item>
+                        <Dropdown.Item> TV </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <Menu.Item
                     key={5}
-                    name='testimonials'
+                    name='about'
                     active={activeItem === 'testimonials'}
                     onClick={this.handleItemClick}
                 >
-                    Testimonials
+                    About us
             </Menu.Item>
-                {this.renderContent()}
+                <Menu.Menu position="right">
+                    <Menu.Item>
+                        <Input icon="search" placeholder="Search ..." />
+                    </Menu.Item>
+                    {this.renderContent()}
+                </Menu.Menu>
             </Menu>
         );
     }

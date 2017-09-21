@@ -6,8 +6,14 @@ import { Field, reduxForm } from 'redux-form';
 import * as actions from '../Actions';
 
 class Login extends Component {
+    conditionalRedirect() {
+        if(this.props.auth) {
+            this.props.history.push('/');
+        }
+    }
+    
     handleFormSubmit = (formProps, history) => {
-        // console.log("All props", this.props);
+        console.log("All props", this.props);
         this.props.signinUser(formProps, this.props.history)
     }
     
@@ -54,6 +60,7 @@ class Login extends Component {
                         New to us? <Link to="/signup">Sign Up</Link>
                     </div>
                 </div>
+                {this.conditionalRedirect()}
             </div>
         );
     }
@@ -75,7 +82,8 @@ const validate = (formProps) => {
 
 const mapStateToProps = (state) => {
     return {
-        formValues: state.form.errors
+        formValues: state.form.errors,
+        auth: state.auth
     };
 };
 

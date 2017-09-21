@@ -34,6 +34,7 @@
         ],
         "no-extra-semi": "error",
         "semi-spacing": "error",
+        "no-console": "off",
         "react/jsx-uses-vars": "error",
         "react/jsx-uses-react": "error",
         "react/jsx-indent": "error",

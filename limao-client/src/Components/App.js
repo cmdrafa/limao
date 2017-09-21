@@ -8,7 +8,6 @@ import Login from './Login';
 import SignUp from './Signup';
 import * as actions from '../Actions';
 
-
 class App extends Component {
     componentDidMount() {
         this.props.fetchUser();
