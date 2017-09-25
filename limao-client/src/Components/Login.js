@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import * as actions from '../Actions';
 
 class Login extends Component {
+    
     renderField = ({ input, label, name, type, meta: { touched, error } }) => {
         return (
             <div className="field">

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/api/*" : {
+    "/api/*": {
       "target": "http://localhost:5000"
     }
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
@@ -18,7 +19,8 @@
     "redux-form": "^7.0.4",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.73.1"
+    "semantic-ui-react": "^0.73.1",
+    "update": "^0.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

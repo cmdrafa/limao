@@ -57,11 +57,13 @@ class NavBar extends Component {
                 </Menu.Item>
                 <Menu.Item
                     key={4}
-                    name='features'
-                    active={activeItem === 'features'}
+                    as={Link}
+                    to="/dashboard"
+                    name='My dashboard'
+                    active={activeItem === 'My dashboard'}
                     onClick={this.handleItemClick}
                 >
-                    Features
+                    My dashboard
             </Menu.Item>
                 <Dropdown text="Sections" pointing className="link item">
                     <Dropdown.Menu>

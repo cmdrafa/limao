@@ -6,6 +6,7 @@ import Navbar from './NavBar';
 import Landing from './Landing';
 import Login from './Login';
 import SignUp from './Signup';
+import Dashboard from './Dashboard/Dashboard';
 import * as actions from '../Actions';
 
 class App extends Component {
@@ -20,8 +21,9 @@ class App extends Component {
                     <div>
                         <Navbar />
                         <Route exact={true} path="/" component={Landing} />
-                        <Route exact={true} path="/login" component={Login} />
-                        <Route exact={true} path="/signup" component={SignUp} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/signup" component={SignUp} />
+                        <Route extact={true} path="/dashboard" component={Dashboard} />
                     </div>
                 </BrowserRouter>
             </div>

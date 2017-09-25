@@ -31,8 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Bind the auth route to express
-const routes = require('./routes/auth_route');
-routes(app);
+const auth_routes = require('./routes/auth_route');
+const posts_routes = require('./routes/posts_route');
+auth_routes(app);
+posts_routes(app);
 
 //Define PORt and open the node server
 const PORT = process.env.PORT || 5000;
