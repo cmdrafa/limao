@@ -20,24 +20,15 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Navbar />
-                        <Route exact={true} path="/" component={Landing} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/signup" component={SignUp} />
-                        <Route extact={true} path="/dashboard" component={Dashboard} />
+                        <div className="container">
+                            <Route exact={true} path="/" component={Landing} />
+                            <Route path="/login" component={Login} />
+                            <Route path="/signup" component={SignUp} />
+                            <Route extact={true} path="/dashboard" component={Dashboard} />
+                        </div>
                     </div>
                 </BrowserRouter>
             </div>
-
-
-        /*<div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>*/
         );
     }
 }

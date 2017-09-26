@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUserPost } from '../../Actions/';
-import { Card } from 'semantic-ui-react';
+import { Item } from 'semantic-ui-react';
 
 class DashboardMain extends Component {
     componentDidMount() {
-        console.log(this.props);
+        //console.log(this.props.posts);
         this.props.fetchUserPost();
     }
 
@@ -21,17 +21,18 @@ class DashboardMain extends Component {
     }
 
     renderPosts() {
+        console.log(this.props.posts);
         return this.props.posts.reverse().map((post) => {
             return (
-                <Card key={post._id} fluid>
-                    <Card.Content>
-                        <Card.Header>{post.subject}</Card.Header>
-                        <Card.Meta> Published On:
-                            {new Date(post.postDate).toLocaleString()}
-                        </Card.Meta>
-                        <Card.Description>{post.body}</Card.Description>
-                    </Card.Content>
-                </Card>
+                <Item key={post._id}>
+                    <Item.Image src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg" />
+                    <Item.Content>
+                        <Item.Header>{post.title}</Item.Header>
+                        <Item.Meta>{post.briefDesc} - {post.section}</Item.Meta>
+                        <Item.Description>{post.body}</Item.Description>
+                        <Item.Extra>{new Date(post.postDate).toLocaleString()}</Item.Extra>
+                    </Item.Content>
+                </Item>
             );
         });
     }
@@ -41,9 +42,9 @@ class DashboardMain extends Component {
         return (
             <div>
                 {this.renderUserName()}
-                <Card.Group>
+                <Item.Group divided>
                     {this.renderPosts()}
-                </Card.Group>
+                </Item.Group>
             </div>
         );
     }

@@ -33,15 +33,12 @@ class NavBar extends Component {
                 );
             default:
                 return [
-                    <Menu.Item
-                        key={2}
-                        href="/api/logout"
-                        name='log-out'
-                        active={activeItem === 'log-out'}
-                        onClick={this.handleItemClick}
-                    >
-                        Logout
-                        </Menu.Item>
+                    <Dropdown text={this.props.auth.email} pointing className="link item">
+                        <Dropdown.Menu>
+                            <Dropdown.Item as={Link} to='/dashboard'>Profile</Dropdown.Item>
+                            <Dropdown.Item href="/api/logout">Logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 ]
         }
 
@@ -59,11 +56,11 @@ class NavBar extends Component {
                     key={4}
                     as={Link}
                     to="/dashboard"
-                    name='My dashboard'
-                    active={activeItem === 'My dashboard'}
+                    name='featured'
+                    active={activeItem === 'Featured'}
                     onClick={this.handleItemClick}
                 >
-                    My dashboard
+                    Featured content
             </Menu.Item>
                 <Dropdown text="Sections" pointing className="link item">
                     <Dropdown.Menu>
@@ -99,3 +96,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(NavBar);
+
