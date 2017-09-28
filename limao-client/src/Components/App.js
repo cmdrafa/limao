@@ -27,6 +27,7 @@ class App extends Component {
                             <Route path="/login" component={Login} />
                             <Route path="/signup" component={SignUp} />
                             <Route path='/featured' component={Featured} />
+                            <Route path='/categories/:cat' component={Categories} />
                             <Route path="/posts/:url" component={Post} />
                             <Route extact={true} path="/dashboard" component={Dashboard} />
                         </div>
