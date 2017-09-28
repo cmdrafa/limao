@@ -16,7 +16,8 @@ const PostSchema = new Schema({
         data: Buffer,
         type: String,
     },
-    video: String
+    video: String,
+    url: String,
 });
 
 mongoose.model('posts', PostSchema);

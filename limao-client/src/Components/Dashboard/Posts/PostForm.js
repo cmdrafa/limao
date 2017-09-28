@@ -17,7 +17,12 @@ class PostForm extends Component {
 
     renderBodyArea = ({ input, label, name, type, meta: { touched, error } }) => {
         return (
-            <TextArea {...input} name={name} style={{ marginBottom: '10px' }} autoHeight placeholder="Post body" />
+            <div className="field">
+                <label>{label}</label>
+                <div className="ui top input">
+                    <TextArea {...input} name={name} style={{ marginBottom: '10px' }} autoHeight placeholder="Post body" />
+                </div>
+            </div>
         );
 
     }
@@ -30,7 +35,9 @@ class PostForm extends Component {
                         component={this.renderMainFields} />
                     <Field name="briefDesc" type="text" label="Brief Description" placeholder="Brief Description"
                         component={this.renderMainFields} />
-                    <Field name="section" component="select" className="ui search dropdown" style={{marginBottom: '10px'}}>
+                    <Field name="url" type="text" label="Especify the URL accessible by the browser" placeholder="url for this post"
+                        component={this.renderMainFields} />
+                    <Field name="section" component="select" className="ui search dropdown" style={{ marginBottom: '10px' }}>
                         <option >Choose a section</option>
                         <option value="arts">Arts</option>
                         <option value="cinema">Cinema</option>

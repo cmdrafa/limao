@@ -35,8 +35,8 @@ class NavBar extends Component {
                 return [
                     <Dropdown text={this.props.auth.email} pointing className="link item">
                         <Dropdown.Menu>
-                            <Dropdown.Item as={Link} to='/dashboard'>Profile</Dropdown.Item>
-                            <Dropdown.Item href="/api/logout">Logout</Dropdown.Item>
+                            <Dropdown.Item key='profile' as={Link} to='/dashboard'>Profile</Dropdown.Item>
+                            <Dropdown.Item key='logout' href="/api/logout">Logout</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 ]
@@ -55,7 +55,7 @@ class NavBar extends Component {
                 <Menu.Item
                     key={4}
                     as={Link}
-                    to="/dashboard"
+                    to="/featured"
                     name='featured'
                     active={activeItem === 'Featured'}
                     onClick={this.handleItemClick}

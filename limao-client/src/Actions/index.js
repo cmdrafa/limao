@@ -27,6 +27,12 @@ export const fetchPosts = () => async dispatch => {
     dispatch({ type: FETCH_POSTS, payload: res.data });
 };
 
+export const fetchPostByUrl = () => async dispatch => {
+    const res = await axios.post('/api/postbyurl');
+
+    dispatch({ type: FETCH_POSTS, payload: res.data });
+};
+
 export const fetchUserPost = () => async dispatch => {
     const res = await axios.get('/api/author_post');
 
