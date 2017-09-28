@@ -65,11 +65,11 @@ class NavBar extends Component {
                 <Dropdown text="Sections" pointing className="link item">
                     <Dropdown.Menu>
                         <Dropdown.Header>Categories</Dropdown.Header>
-                        <Dropdown.Item> Arts </Dropdown.Item>
-                        <Dropdown.Item> Cinema </Dropdown.Item>
-                        <Dropdown.Item> Games </Dropdown.Item>
-                        <Dropdown.Item> Music </Dropdown.Item>
-                        <Dropdown.Item> TV </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/categories/arts"> Arts </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/categories/cinema"> Cinema </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/categories/games"> Games </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/categories/music"> Music </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/categories/tv"> TV </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 <Menu.Item

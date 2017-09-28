@@ -28,10 +28,16 @@ export const fetchPosts = () => async dispatch => {
 };
 
 export const fetchPostByUrl = () => async dispatch => {
-    const res = await axios.post('/api/postbyurl');
+    const res = await axios.get('/api/postbyurl');
 
     dispatch({ type: FETCH_POSTS, payload: res.data });
 };
+
+export const fetchByCat = () => async dispatch => {
+    const res = await axios.get('/api/postbycat');
+
+    dispatch({type: FETCH_POSTS, payload: res.data});
+}
 
 export const fetchUserPost = () => async dispatch => {
     const res = await axios.get('/api/author_post');

@@ -53,8 +53,13 @@ module.exports = (app) => {
     });
 
     app.get('/api/postbycat', async (req, res) => {
-        const posts = await Post.find({section: req.body.section});
+        const postSec = req.headers.referer.split('/');
+        const section = postSec.pop() || postSec.pop();
+        console.log(section);
 
+        const posts = await Post.find({section: section});
+
+        console.log(posts);
         res.send(posts)
     });
 };

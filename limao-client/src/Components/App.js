@@ -9,6 +9,7 @@ import SignUp from './Signup';
 import Dashboard from './Dashboard/Dashboard';
 import Featured from './Featured';
 import Post from './Post';
+import Categories from './Categories';
 import * as actions from '../Actions';
 
 class App extends Component {
