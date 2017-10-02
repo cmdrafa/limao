@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { TextArea, Image } from 'semantic-ui-react';
-import FileUpload from './FileUpload'
+import { TextArea } from 'semantic-ui-react';
+//import ImageUpload from './Dropzone';
 
-const FILE_FIELD_NAME = 'file';
+const adaptFileEventToValue = delegate =>
+    e => delegate(e.target.files[0])
+
+const FileInput = ({
+input: {
+  value: omitValue,
+    onChange,
+    onBlur,
+    ...inputProps,
+},
+    meta: omitMeta,
+    ...props,
+}) =>
+    <input
+        onChange={adaptFileEventToValue(onChange)}
+        onBlur={adaptFileEventToValue(onBlur)}
+        type="file"
+        {...inputProps}
+        {...props}
+    />
 
 class PostForm extends Component {
     renderMainFields = ({ input, label, name, type, meta: { touched, error } }) => {
@@ -37,8 +56,7 @@ class PostForm extends Component {
                         component={this.renderMainFields} />
                     <Field name="briefDesc" type="text" label="Brief Description" placeholder="Brief Description"
                         component={this.renderMainFields} />
-                        <label htmlFor={FILE_FIELD_NAME}>File</label>
-                    <input type="file" name="file" />
+                    <Field name="file" component={FileInput} />
                     <Field name="url" type="text" label="Especify the URL accessible by the browser" placeholder="url for this post"
                         component={this.renderMainFields} />
                     <Field name="section" component="select" className="ui search dropdown" style={{ marginBottom: '10px' }}>

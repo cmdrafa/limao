@@ -1,5 +1,4 @@
 import axios from 'axios';
-import superagent from 'superagent';
 import { FETCH_USER, FETCH_POSTS } from './types';
 
 export const fetchUser = () => async (dispatch) => {
@@ -47,7 +46,7 @@ export const fetchUserPost = () => async dispatch => {
 };
 
 export const addPost = (values, history) => async dispatch => {
-    console.log(values.file);
+    console.log(values);
     let data = new FormData();
     data.append('file', values.file);
     /*const config = {
@@ -57,9 +56,9 @@ export const addPost = (values, history) => async dispatch => {
     };*/
     console.log(data);
 
-    const temp_res = await superagent.post('/api/mediaupload')
-        .send(data);
-    //const temp_res = await axios.post('/api/mediaupload', data);
+    //const temp_res = await superagent.post('/api/mediaupload')
+    //  .send(data);
+    const temp_res = await axios.post('/api/mediaupload', data);
 
     console.log(temp_res);
 

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const dataSchema = require('./Datamodel');
 
 const PostSchema = new Schema({
     title: String,
@@ -12,7 +11,7 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    imageOne: [dataSchema],
+    imageurl: String,
     postDate: Date,
     video: String,
     url: String,

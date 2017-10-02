@@ -8,26 +8,24 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log(req);
-        console.log(file);
-        cb(null, '/media/posts')
+        cb(null, 'media/posts');
     },
     filename: (req, file, cb) => {
         switch (file.mimetype) {
-            case 'image/jpeg':
-                ext = '.jpeg';
-                break;
-            case 'image/png':
-                ext = '.png';
-                break;
-            case 'image/gif':
-                ext = '.gif';
-                break;
+        case 'image/jpeg':
+            ext = '.jpeg';
+            break;
+        case 'image/png':
+            ext = '.png';
+            break;
+        case 'image/gif':
+            ext = '.gif';
+            break;
         }
-
         cb(null, file.fieldname + '-' + Date.now() + ext);
     }
-})
+});
+
 const upload = multer({
     storage: storage
 });
@@ -60,13 +58,12 @@ module.exports = (app) => {
 
     // Upload media to the server
     app.post('/api/mediaupload', upload.single('file'), async (req, res) => {
-        console.log(req)
-        if( req.file && req.file.originalname ) {
+        console.log(req);
+        if (req.file && req.file.originalname) {
             console.log(`Received file ${req.file.originalname}`);
         }
-        //res.send(req.file.path);
-        //res.send({responseTex: req.file.path});
-    })
+        res.send(req.file.path);
+    });
 
     // Fetch blog post
     app.get('/api/posts', async (req, res) => {
