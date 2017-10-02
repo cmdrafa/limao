@@ -9,8 +9,6 @@ class Categories extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('This props', this.props);
-        console.log('Next props', nextProps);
         if (this.props.match.params.cat !== nextProps.match.params.cat) {
             this.props.fetchByCat();
             this.setState({ posts: nextProps.post });
@@ -18,7 +16,6 @@ class Categories extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <h1 style={{ textAlign: 'center' }}>Categories</h1>

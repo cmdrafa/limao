@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 
 // Config files
 require('./models/User');
