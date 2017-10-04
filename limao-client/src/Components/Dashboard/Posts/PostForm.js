@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TextArea } from 'semantic-ui-react';
-//import ImageUpload from './Dropzone';
 
 const adaptFileEventToValue = delegate =>
     e => delegate(e.target.files[0])
@@ -56,7 +55,7 @@ class PostForm extends Component {
                         component={this.renderMainFields} />
                     <Field name="briefDesc" type="text" label="Brief Description" placeholder="Brief Description"
                         component={this.renderMainFields} />
-                    <Field name="file" component={FileInput} />
+                    <Field name="imageurl" component={FileInput} />
                     <Field name="url" type="text" label="Especify the URL accessible by the browser" placeholder="url for this post"
                         component={this.renderMainFields} />
                     <Field name="section" component="select" className="ui search dropdown" style={{ marginBottom: '10px' }}>

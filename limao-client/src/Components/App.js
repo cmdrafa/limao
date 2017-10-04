@@ -6,7 +6,8 @@ import Navbar from './NavBar';
 import Landing from './Landing';
 import Login from './Login';
 import SignUp from './Signup';
-import Dashboard from './Dashboard/Dashboard';
+//import Dashboard from './Dashboard/Dashboard';
+import DashboardNew from './Dashboard/DashboardNew';
 import Featured from './Featured';
 import Post from './Post';
 import Categories from './Categories';
@@ -30,7 +31,7 @@ class App extends Component {
                             <Route path='/featured' component={Featured} />
                             <Route path='/categories/:cat' component={Categories} />
                             <Route path="/posts/:url" component={Post} />
-                            <Route extact={true} path="/dashboard" component={Dashboard} />
+                            <Route extact={true} path="/dashboard" component={DashboardNew} />
                         </div>
                     </div>
                 </BrowserRouter>

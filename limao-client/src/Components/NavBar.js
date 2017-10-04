@@ -33,7 +33,7 @@ class NavBar extends Component {
                 );
             default:
                 return [
-                    <Dropdown text={this.props.auth.email} pointing className="link item">
+                    <Dropdown key="username" text={this.props.auth.email} pointing className="link item">
                         <Dropdown.Menu>
                             <Dropdown.Item key='profile' as={Link} to='/dashboard'>Profile</Dropdown.Item>
                             <Dropdown.Item key='logout' href="/api/logout">Logout</Dropdown.Item>
@@ -65,11 +65,11 @@ class NavBar extends Component {
                 <Dropdown text="Sections" pointing className="link item">
                     <Dropdown.Menu>
                         <Dropdown.Header>Categories</Dropdown.Header>
-                        <Dropdown.Item as={Link} to="/categories/arts"> Arts </Dropdown.Item>
-                        <Dropdown.Item as={Link} to="/categories/cinema"> Cinema </Dropdown.Item>
-                        <Dropdown.Item as={Link} to="/categories/games"> Games </Dropdown.Item>
-                        <Dropdown.Item as={Link} to="/categories/music"> Music </Dropdown.Item>
-                        <Dropdown.Item as={Link} to="/categories/tv"> TV </Dropdown.Item>
+                        <Dropdown.Item key="arts" as={Link} to="/categories/arts"> Arts </Dropdown.Item>
+                        <Dropdown.Item key="cinema"  as={Link} to="/categories/cinema"> Cinema </Dropdown.Item>
+                        <Dropdown.Item key="games" as={Link} to="/categories/games"> Games </Dropdown.Item>
+                        <Dropdown.Item key="music" as={Link} to="/categories/music"> Music </Dropdown.Item>
+                        <Dropdown.Item key="tv" as={Link} to="/categories/tv"> TV </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 <Menu.Item

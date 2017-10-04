@@ -1,26 +1,27 @@
 const mongoose = require('mongoose');
-const _ = require('lodash');
-const Path = require('path-parser');
-const { URL } = require('url');
-var fs = require('fs');
+//const _ = require('lodash');
+//const Path = require('path-parser');
+//const { URL } = require('url');
+//var fs = require('fs');
 const multer = require('multer');
-const path = require('path');
+//const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'media/posts');
+        cb(null, 'limao-client/public/media/posts');
     },
     filename: (req, file, cb) => {
+        let ext;
         switch (file.mimetype) {
-        case 'image/jpeg':
-            ext = '.jpeg';
-            break;
-        case 'image/png':
-            ext = '.png';
-            break;
-        case 'image/gif':
-            ext = '.gif';
-            break;
+            case 'image/jpeg':
+                ext = '.jpeg';
+                break;
+            case 'image/png':
+                ext = '.png';
+                break;
+            case 'image/gif':
+                ext = '.gif';
+                break;
         }
         cb(null, file.fieldname + '-' + Date.now() + ext);
     }
@@ -37,14 +38,15 @@ const requireLogin = require('../middlewares/requireLogin');
 module.exports = (app) => {
     // New blog post
     app.post('/api/posts', async (req, res) => {
-        //console.log(req.body);
-        const { title, body, subject, section, briefDesc, video, files, url } = req.body;
+
+        const { title, body, subject, section, briefDesc, video, imageurl, url } = req.body;
 
         const post = await new Post({
             title,
             briefDesc,
             body,
             subject,
+            imageurl,
             section,
             postDate: Date.now(),
             _user: req.user.id,
@@ -62,7 +64,12 @@ module.exports = (app) => {
         if (req.file && req.file.originalname) {
             console.log(`Received file ${req.file.originalname}`);
         }
-        res.send(req.file.path);
+        console.log('req.file', req.file.path);
+        const file_path = req.file.path.split('/');
+        const path_to_send = file_path.pop();
+        console.log('Path to send', path_to_send);
+
+        res.send(path_to_send);
     });
 
     // Fetch blog post
@@ -80,7 +87,7 @@ module.exports = (app) => {
         const post = await Post.find({ url: urlDb });
 
         res.send(post);
-    })
+    });
 
     // Fetch the users post
     app.get('/api/author_post', requireLogin, async (req, res) => {
@@ -98,6 +105,6 @@ module.exports = (app) => {
         const posts = await Post.find({ section: section });
 
         console.log(posts);
-        res.send(posts)
+        res.send(posts);
     });
 };

@@ -46,25 +46,14 @@ export const fetchUserPost = () => async dispatch => {
 };
 
 export const addPost = (values, history) => async dispatch => {
-    console.log(values);
+    // Passing the file into the FormData object for upload
     let data = new FormData();
-    data.append('file', values.file);
-    /*const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    };*/
-    console.log(data);
+    data.append('file', values.imageurl);
 
-    //const temp_res = await superagent.post('/api/mediaupload')
-    //  .send(data);
     const temp_res = await axios.post('/api/mediaupload', data);
+    values.imageurl = temp_res.data; // Setting the values.imageurl to the url received from the server
 
-    console.log(temp_res);
-
-
-    //values[imageone] = temp_res;
-
+    // Do the blog post
     const res = await axios.post('/api/posts', values);
 
     history.push('/dashboard');

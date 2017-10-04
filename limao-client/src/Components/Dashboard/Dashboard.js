@@ -24,7 +24,7 @@ class Dashboard extends Component {
                             <Menu.Item name='archive'>
                                 <Icon name='archive' />
                                 My posts
-                </Menu.Item>
+                            </Menu.Item>
                             <Menu.Item
                                 as={Link}
                                 name='newPost'
@@ -32,7 +32,7 @@ class Dashboard extends Component {
                             >
                                 <Icon name='add circle' />
                                 New post
-                </Menu.Item>
+                            </Menu.Item>
                             <Menu.Item name='delete'>
                                 <Icon name='recycle' />
                                 Delete post

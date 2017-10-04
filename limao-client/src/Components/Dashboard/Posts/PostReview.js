@@ -1,24 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, Header, Image } from 'semantic-ui-react';
 
 import * as actions from '../../../Actions';
 
-const PostReview = (props) => {
-    console.log('Post review props ', props);
+class PostReview extends Component {
+    constructor(props) {
+        super(props);
 
-    return (
-        <Container text>
-            <Header as='h2'>{props.formValues.title}</Header>
-            <Header as='h3'>Section: {props.formValues.section}</Header>
-            <Header as='h3'>URL for the post: {props.formValues.url} </Header>
-            <p style={{ marginBottom: '10px' }} >{props.formValues.body}</p>
-            <button className="ui left floated button negative" onClick={props.onCancel}>Back post</button>
-            <button className="ui right floated button positive" onClick={() => props.addPost(props.formValues, props.history)}> Submit post </button>
-        </Container>
-    );
-};
+        this.state = { imagepreview: '' };
+    }
+
+    componentDidMount() {
+        let reader = new FileReader();
+        let file = this.props.formValues.imageurl;
+
+        reader.onloadend = () => {
+            this.setState({
+                imagepreview: reader.result
+            });
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    render() {
+        let { imagepreview } = this.state;
+
+        return (
+            <Container text>
+                <Header as='h2'>{this.props.formValues.title}</Header>
+                <Header as='h3'>Section: {this.props.formValues.section}</Header>
+                <Header as='h3'>URL for the post: {this.props.formValues.url} </Header>
+                <Image src={imagepreview} size="medium" />
+                <p style={{ marginBottom: '10px' }} >{this.props.formValues.body}</p>
+                <button className="ui left floated button negative" onClick={this.props.onCancel}>Back post</button>
+                <button className="ui right floated button positive" onClick={() => this.props.addPost(this.props.formValues, this.props.history)}> Submit post </button>
+            </Container>
+        );
+    }
+}
 
 const mapStateToProps = (state) => {
     return {

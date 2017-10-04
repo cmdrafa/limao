@@ -32,12 +32,12 @@ class Login extends Component {
     }
 
     handleFormSubmit = (formProps, history) => {
-        console.log("All props", this.props);
+        //console.log("All props", this.props);
         this.props.signinUser(formProps, this.props.history)
     }
 
     renderAlert() {
-        console.log(this.props)
+       // console.log(this.props)
     }
 
 

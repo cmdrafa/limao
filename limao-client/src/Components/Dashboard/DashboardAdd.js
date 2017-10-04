@@ -7,15 +7,17 @@ class DashboardAdd extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { showPostReview: false };
+        this.state = { showPostReview: false, file: [] };
+        console.log(this.state);
     }
 
     renderContent() {
-        console.log(this.props);
+        //console.log(this.props);
         if (this.state.showPostReview) {
             return <PostReview onCancel={() => this.setState({ showPostReview: false })} />;
         }
 
+        // Insert the file reader function here !!!
         return <PostForm onPostSubmit={() => this.setState({ showPostReview: true })} />;
     }
 

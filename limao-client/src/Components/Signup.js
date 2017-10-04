@@ -23,7 +23,7 @@ class SignUp extends Component {
     }
 
     renderAlert() {
-        console.log(this.props);
+        //console.log(this.props);
         if (this.props.formerror) {
             return (
                 <div className="alert alert-danger">
@@ -36,7 +36,7 @@ class SignUp extends Component {
 
 
     handleFormSubmit = (formProps, history) => {
-        console.log(formProps, this.props.history);
+        //console.log(formProps, this.props.history);
         this.props.signupUser(formProps, this.props.history)
     }
 
