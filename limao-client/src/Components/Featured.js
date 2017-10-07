@@ -16,7 +16,7 @@ class Featured extends Component {
         return this.props.posts.reverse().map((post) => {
             return (
                 <Item key={post._id}>
-                    <Item.Image src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg" />
+                    <Item.Image src={`${process.env.PUBLIC_URL}/media/posts/${post.imageurl}`} />
                     <Item.Content>
                         <Item.Header as={Link} to={`/posts/${post.url}`}>{post.title}</Item.Header>
                         <Item.Meta>{post.briefDesc} - {post.section}</Item.Meta>

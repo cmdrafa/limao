@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Container } from 'semantic-ui-react';
+
 import { fetchByCat } from '../Actions';
 
 
@@ -17,10 +19,10 @@ class Categories extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <h1 style={{ textAlign: 'center' }}>Categories</h1>
                 <h2>You are in the {this.props.match.params.cat} section </h2>
-            </div>
+            </Container>
         );
     }
 }

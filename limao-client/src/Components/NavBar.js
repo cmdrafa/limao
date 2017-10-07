@@ -48,7 +48,7 @@ class NavBar extends Component {
         const { activeItem } = this.state
 
         return (
-            <Menu stackable>
+            <Menu inverted stackable>
                 <Menu.Item key={3} as={Link} to="/">
                     <Icon color="teal" name="home" size="large" />
                 </Menu.Item>

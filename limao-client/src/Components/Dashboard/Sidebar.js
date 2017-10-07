@@ -18,7 +18,7 @@ class Sidebar extends Component {
         const { activeItem } = this.state;
 
         return (
-            <Menu inverted vertical>
+            <Menu vertical>
                 <Menu.Item>
                     <Menu.Header><Icon name="setting" size="big" fitted color="teal" /></Menu.Header>
                 </Menu.Item>

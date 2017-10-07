@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Container } from 'semantic-ui-react';
 
 import DashboardMain from './DashboardMain';
 import DashboardAdd from './DashboardAdd';
@@ -28,9 +28,9 @@ class DashboardNew extends Component {
             );
         }
         return (
-            <div>
+            <Container>
                 <h2 style={{ textAlign: 'center' }}>Forbidden, please login!</h2>
-            </div>
+            </Container>
         );
     }
 }
