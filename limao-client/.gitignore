@@ -9,6 +9,11 @@
 # production
 /build
 
+#media
+
+/public/media/posts
+
+
 # misc
 .DS_Store
 .env.local
