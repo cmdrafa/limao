@@ -13,7 +13,7 @@ class NavBar extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     renderContent() {
-        //console.log("All props", this.props);
+        console.log("All props", this.state);
         const { activeItem } = this.state
         switch (this.props.auth) {
             case null:
@@ -33,8 +33,9 @@ class NavBar extends Component {
                 );
             default:
                 return [
-                    <Dropdown key="username" text={this.props.auth.email} pointing className="link item">
+                    <Dropdown key="username" icon="user circle outline" pointing className="link item">
                         <Dropdown.Menu>
+                            <Dropdown.Header icon="user" content={this.props.auth.email} />
                             <Dropdown.Item key='profile' as={Link} to='/dashboard'>Profile</Dropdown.Item>
                             <Dropdown.Item key='logout' href="/api/logout">Logout</Dropdown.Item>
                         </Dropdown.Menu>

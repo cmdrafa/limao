@@ -12,6 +12,7 @@ const PostSchema = new Schema({
         ref: 'User'
     },
     imageurl: String,
+    postedBy: String,
     postDate: Date,
     video: String,
     url: String,

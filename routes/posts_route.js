@@ -32,14 +32,17 @@ const upload = multer({
 });
 
 const Post = mongoose.model('posts');
+const User = mongoose.model('users');
 
 const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = (app) => {
     // New blog post
-    app.post('/api/posts', async (req, res) => {
+    app.post('/api/posts', requireLogin, async (req, res) => {
+        console.log(req);
 
         const { title, body, subject, section, briefDesc, video, imageurl, url } = req.body;
+        const postedBy = req.user.firstName.concat((' '), req.user.lastName);
 
         const post = await new Post({
             title,
@@ -47,6 +50,7 @@ module.exports = (app) => {
             body,
             subject,
             imageurl,
+            postedBy,
             section,
             postDate: Date.now(),
             _user: req.user.id,
@@ -85,7 +89,7 @@ module.exports = (app) => {
         const urlDb = postUrl.pop() || postUrl.pop();
 
         const post = await Post.find({ url: urlDb });
-
+    
         res.send(post);
     });
 
@@ -104,7 +108,6 @@ module.exports = (app) => {
 
         const posts = await Post.find({ section: section });
 
-        console.log(posts);
         res.send(posts);
     });
 };

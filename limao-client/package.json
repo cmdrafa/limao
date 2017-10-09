@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "draft-js": "^0.10.3",
     "lodash": "^4.17.4",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
