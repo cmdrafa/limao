@@ -32,7 +32,6 @@ const upload = multer({
 });
 
 const Post = mongoose.model('posts');
-const User = mongoose.model('users');
 
 const requireLogin = require('../middlewares/requireLogin');
 

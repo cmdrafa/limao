@@ -10,6 +10,9 @@
   "dependencies": {
     "axios": "^0.16.2",
     "draft-js": "^0.10.3",
+    "draft-js-emoji-plugin": "^2.0.0-beta1",
+    "draft-js-linkify-plugin": "^2.0.0-beta1",
+    "draft-js-plugins-editor": "^2.0.0-beta1",
     "lodash": "^4.17.4",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",

@@ -6,6 +6,7 @@ import { Grid, Container } from 'semantic-ui-react';
 import DashboardMain from './DashboardMain';
 import DashboardAdd from './DashboardAdd';
 import Sidebar from './Sidebar';
+import RichEditor from './Posts/RichEditor';
 
 class DashboardNew extends Component {
     render() {
@@ -21,6 +22,7 @@ class DashboardNew extends Component {
                             <Switch>
                                 <Route exact={true} path='/dashboard' component={DashboardMain} />
                                 <Route path="/dashboard/addpost" component={DashboardAdd} />
+                                <Route path="/dashboard/rich" component={RichEditor} />
                             </Switch>
                         </Grid.Column>
                     </Grid>

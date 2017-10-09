@@ -38,6 +38,8 @@ class Sidebar extends Component {
                             Add new post
                         </Menu.Item>
                         <Menu.Item name='remove'
+                            as={Link}
+                            to="/dashboard/rich"
                             active={activeItem === 'about'}
                             onClick={this.handleItemClick}>
                             Remove a post
