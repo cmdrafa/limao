@@ -1,62 +1,49 @@
 import React, { Component } from 'react';
-import {Editor, EditorState, ContentState, RichUtils } from 'draft-js';
+import ReactQuill from 'react-quill';
 
+import 'react-quill/dist/quill.snow.css';
 
-import './RichEditor.css';
+const modules = {
+    toolbar: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image'],
+        ['clean']
+    ],
+};
 
-
-
-const linkyfiPlugin = createLinkifyPlugin();
+const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+];
 
 class RichEditor extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            editorState: EditorState.createEmpty(),
+            text: ''
         };
+        this.handleChange = this.handleChange.bind(this);
+
     }
 
-    onChange = (editorState) => {
-        this.setState({ editorState });
-    };
 
-    handleKeyCommand = (command) => {
-        const newState = RichUtils.handleKeyCommand(this.state.editorState, command);
-
-        if (newState) {
-            this.onChange(newState);
-            return 'handled';
-        }
-
-        return 'not-handled';
+    handleChange(value) {
+        this.setState({ text: value })
     }
 
-    onUnderlineClick = () => {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
-    }
-
-    onToggleCode = () => {
-        this.onChange(RichUtils.toggleCode(this.state.editorState));
-    }
-
-    onBoldClick = () => {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
-    }
 
     render() {
+        console.log(this.state);
         return (
-            <div style={{ padding: '2em', background: '#333', fontFamily: 'sans-serif' }} >
-                <button onClick={this.onUnderlineClick}>Underline</button>
-                <button onClick={this.onBoldClick}>Bold</button>
-                <button onClick={this.onToggleCode}>Code Block</button>
-                <button onClick={this.onToggleLink}>Link</button>
-                <Editor
-                    editorState={this.state.editorState}
-                    handleKeyCommand={this.handleKeyCommand}
-                    onChange={this.onChange}
-                />
-            </div>
+            <ReactQuill value={this.state.text}
+                modules={modules}
+                formats={formats}
+                onChange={this.handleChange} />
         );
     }
 }
